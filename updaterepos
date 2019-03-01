@@ -1,10 +1,12 @@
 #!/bin/bash
 
 ls -1d */ | while read repo ; do
-	printf "%-30s" "$repo"
-	response=$(cd $repo && git pull)
-	printf "%-30s\n" "$response"
-	cd
+	if [[ -d "$repo/.git/" ]] ; then
+		printf "%-30s" "$repo"
+		response=$(cd $repo && git pull)
+		printf "%-30s\n" "$response"
+		cd
+	fi
 done
 
 #In reality, this script should grab all the directories that contain a `.git` file and pull those

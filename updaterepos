@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ls -1d */ | while read repo ; do
+	printf "%-30s" "$repo"
+	response=$(cd $repo && git pull)
+	printf "%-30s\n" "$response"
+	cd
+done
+
+#In reality, this script should grab all the directories that contain a `.git` file and pull those
+#	- It would also make `recursion` through the system easier since you don't recurse through
+#	the repos.

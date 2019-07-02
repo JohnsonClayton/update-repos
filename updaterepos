@@ -5,7 +5,7 @@ ls -1d */ | while read repo ; do
 		printf "%-30s" "$repo"
 		response=$(cd $repo && git pull)
 		printf "%-30s\n" "$response"
-		cd
+		cd ~/projects 
 	fi
 done
 
